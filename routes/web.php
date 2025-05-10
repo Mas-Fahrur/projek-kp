@@ -14,7 +14,6 @@ Route::get('/', function () {
 
 Route::get('/produk/{kategori}', [App\Http\Controllers\ProdukController::class, 'index'])->name('produk.kategori');
 
-
 // Optional: Login tetap boleh ada
 Route::post('/login', [AuthController::class, 'login']);
 

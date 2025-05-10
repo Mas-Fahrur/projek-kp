@@ -24,7 +24,7 @@
         <div class="produk-container">
             @foreach ($items as $item)
                 <div class="produk-card">
-                    <img src="{{ asset('images/default-product.jpg') }}" alt="{{ $item }}">
+                    <img src="{{ asset(`images/default-product.jpg`) }}" alt="{{ $item }}">
                     <h3>{{ $item }}</h3>
                 </div>
             @endforeach
