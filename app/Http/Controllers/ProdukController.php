@@ -23,9 +23,9 @@ class ProdukController extends Controller
         }
 
         // Kirim data ke view
-        return view('produk', [
+        return view('produk.produk', [
             'kategori' => $kategori,
-            'items' => $produk[$kategori]
+            'items' => $kategori
         ]);
     }
 }
