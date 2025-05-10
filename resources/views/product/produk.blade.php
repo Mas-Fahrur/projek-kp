@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ ucfirst($kategori) }} - TokoKeren</title>
+    <title>{{ ucfirst($products) }} - TokoKeren</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
     <div class="navbar">
         <div class="logo">TokoKeren</div>
@@ -20,15 +22,24 @@
     </div>
 
     <section class="produk">
-        <h2>Produk Kategori: {{ ucfirst($kategori) }}</h2>
+        <h2>Produk Kategori: </h2>
         <div class="produk-container">
-            @foreach ($items as $item)
+            @foreach ($products as $product)
                 <div class="produk-card">
-                    <img src="{{ asset(`images/default-product.jpg`) }}" alt="{{ $item }}">
-                    <h3>{{ $item }}</h3>
+                    @if ($product->image_url)
+                        <img src="{{ $product->image_url }}" alt="Gambar Produk" width="100">
+                    @else
+                        Tidak ada gambar
+                    @endif
+                    <h3>{{ $product->name }}</h3>
+                    <h4>{{ $product->stock }}</h4>
+                    <p>{{ $product->category }}</p>
+                    <p>Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+
                 </div>
             @endforeach
         </div>
     </section>
 </body>
+
 </html>

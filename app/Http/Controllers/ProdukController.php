@@ -17,15 +17,14 @@ class ProdukController extends Controller
             'bahan' => ['Kain Batik Tulis', 'Kain Batik Cap']
         ];
 
-        // ✅ Ganti $produk jadi $items di sini
         if (!array_key_exists($kategori, $items)) {
-            abort(404); // Jika tidak ditemukan, tampilkan 404
+            abort(404);
         }
 
         // Kirim data ke view
         return view('produk.produk', [
             'kategori' => $kategori,
-            'items' => $kategori
+            'items' => $items[$kategori]
         ]);
     }
 }

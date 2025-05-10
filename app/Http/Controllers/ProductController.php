@@ -33,13 +33,13 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all()->map(function ($product) {
-            $product->image_url = $product->image 
+            $product->image_url = $product->image
                 ? asset('storage/' . $product->image)
                 : null;
             return $product;
         });
 
-        return response()->json($products);
+        return view('product.produk', ['products' => $products]);
     }
 
     public function destroy($id)

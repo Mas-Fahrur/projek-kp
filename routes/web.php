@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('beranda.beranda');
 });
 
-Route::get('/produk/{kategori}', [App\Http\Controllers\ProdukController::class, 'index'])->name('produk.kategori');
+Route::get('/produk/{kategori}', [App\Http\Controllers\ProductController::class, 'index'])->name('produk.kategori');
 
 // Optional: Login tetap boleh ada
 Route::post('/login', [AuthController::class, 'login']);
