@@ -12,28 +12,30 @@
 <body>
 
   <!-- Navbar -->
-  <div class="navbar">
-    <div class="logo">
-      <img src="images/logo/logo.png" alt="Logo" class="logo-img" />
-      <span>ISKANDARTEX</span>
-    </div>
-    
-    <ul class="nav-menu">
-      <li><a href="#beranda">Beranda</a></li>
-      <li class="dropdown">
-        <a href="#produk">Produk</a>
-        <ul class="dropdown-content">
-            <li><a href="{{ route('produk.kategori', 'man') }}">man</a></li>
-            <li><a href="{{ route('produk.kategori', 'women') }}">women</a></li>
-            <li><a href="{{ route('produk.kategori', 'couple') }}">couple</a></li>
-            <li><a href="{{ route('produk.kategori', 'sarung') }}">sarung</a></li>
-            <li><a href="{{ route('produk.kategori', 'bahan') }}">bahan</a></li>
-        </ul>
-    </li>
-      <li><a href="#tentang">Tentang</a></li>
-      <li><a href="#kontak">Kontak</a></li>
-    </ul>
+  <!-- Navbar -->
+<div class="navbar">
+  <div class="logo">
+    <img src="images/logo/logo.png" alt="Logo" class="logo-img" />
+    <span>ISKANDARTEX</span>
   </div>
+  
+  <ul class="nav-menu">
+    <li><a href="#beranda">Beranda</a></li>
+    <li class="dropdown">
+      <a href="#produk">Produk</a>
+      <ul class="dropdown-content">
+        <li><a href="{{ route('produk.kategori', 'man') }}">man</a></li>
+        <li><a href="{{ route('produk.kategori', 'women') }}">women</a></li>
+        <li><a href="{{ route('produk.kategori', 'couple') }}">couple</a></li>
+        <li><a href="{{ route('produk.kategori', 'sarung') }}">sarung</a></li>
+        <li><a href="{{ route('produk.kategori', 'bahan') }}">bahan</a></li>
+      </ul>
+    </li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+    <li><a href="{{ route('login') }}" class="btn-login">Login</a></li> <!-- Dipindah ke sini -->
+  </ul>
+</div>
 
   <!-- Hero Section -->
   <section class="hero" id="beranda">
