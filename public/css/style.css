@@ -263,6 +263,26 @@ body {
   font-weight: bold;
 }
 
+/* Lihat Semua Produk Card */
+.lihat-lainnya {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.lihat-lainnya:hover {
+  transform: translateY(-5px);
+}
+
+.lihat-lainnya a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.lihat-lainnya h3 {
+  font-size: 18px;
+  color: #d20000;
+  margin-top: 10px;
+}
 
 /* Tentang & Kontak */
 .tentang {
@@ -273,6 +293,7 @@ body {
   background-repeat: no-repeat;
   padding: 80px 20px;
   text-align: center;
+  font-weight: bold;
   color: #ffffff;
   z-index: 1;
   overflow: hidden;
@@ -293,7 +314,7 @@ body {
 .tentang h2{
   font-size: 32px;
   margin-bottom: 25px;
-  color: #c90000;
+  color: #ff0f0f;
 }
 .tentang p{
   font-size: 18px;
@@ -358,8 +379,20 @@ footer {
 .maps-text {
   width: 600px;
   height: 450px;
-  
+  font-size: 1.3rem;
 }
 .maps-gmaps {
   
+}
+
+.login-btn {
+  padding: 8px 16px;
+  background-color: #d20000;
+  color: white;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #a80000;
 }

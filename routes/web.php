@@ -7,12 +7,20 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\ProfilController;
 
 Route::get('/', function () {
     return view('beranda.beranda');
-});
+})->name('beranda');
 
 Route::get('/produk/{kategori}', [App\Http\Controllers\ProductController::class, 'index'])->name('produk.kategori');
+
+// Keranjang
+Route::get('/keranjang', [KeranjangController::class, 'showKeranjang'])->name('keranjang');
+
+//Profil
+Route::get('/profil', [ProfilController::class, 'showProfil'])->name('profil');
 
 // Optional: Login tetap boleh ada
 Route::post('/login', [AuthController::class, 'login']);

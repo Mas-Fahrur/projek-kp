@@ -30,8 +30,8 @@
             <li><a href="{{ route('produk.kategori', 'bahan') }}">bahan</a></li>
         </ul>
     </li>
-      <li><a href="#tentang">Tentang</a></li>
-      <li><a href="#kontak">Kontak</a></li>
+      <li><a href={{ route('keranjang') }}>Keranjang</a></li>
+      <li><a href={{ route('profil')}}>Profil</a></li>
     </ul>
   </div>
 
@@ -71,12 +71,19 @@
           <img src="images/couple/couple3/4-2.png" alt="Produk 4" />
           <h3>Couple</h3>
         </div>
+        <div class="swiper-slide produk-card lihat-lainnya">
+          <a href="{{ url('/produk/{kategori}') }}">
+            <img src="images/lihat-lainnya.png" alt="Lihat Semua Produk" />
+            <h3>Lihat Semua Produk →</h3>
+          </a>
+        </div>
       </div>
       <!-- Navigasi -->
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <!-- Pagination -->
       <div class="swiper-pagination"></div>
+      
     </div>
   </section>
   
