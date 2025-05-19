@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', function () {
     return view('beranda.beranda');
@@ -56,3 +57,8 @@ Route::get('/admin/dashboard', function () {
     return view('pages.admin_dashboard');
 });
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+
+Route::get('/produk/kategori/{category}', [ProductController::class, 'showByCategory']);
+
+// routes/web.php
+Route::get('/produk/kategori/{category}', [ProdukController::class, 'showByCategory']);

@@ -9,6 +9,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\AdminReportController;
+use App\Http\Controllers\ProdukController;
 
 // Optional: Login tetap boleh ada
 Route::post('/login', [AuthController::class, 'login']);
@@ -36,3 +37,5 @@ Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
 
 Route::get('/admin/report', [AdminReportController::class, 'downloadReport']);
 
+// routes/api.php
+Route::get('/produk/{category}', [ProdukController::class, 'apiByCategory']);
