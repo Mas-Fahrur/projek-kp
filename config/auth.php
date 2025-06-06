@@ -36,16 +36,20 @@ return [
     */
 
     'guards' => [
-    'web' => [
-        'driver' => 'session',
-        'provider' => 'admins',
-    ],
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
 
-    'api' => [
-        'driver' => 'sanctum',
-        'provider' => 'admins',
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'admins',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
     ],
-],
 
 
     /*
@@ -66,11 +70,16 @@ return [
     */
 
     'providers' => [
-    'admins' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Admin::class,
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ]
     ],
-],
 
 
     /*

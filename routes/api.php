@@ -12,7 +12,7 @@ use App\Http\Controllers\AdminReportController;
 use App\Http\Controllers\ProdukController;
 
 // Optional: Login tetap boleh ada
-Route::post('/login', [AuthController::class, 'login']);
+// Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum', 'is_admin'])->group(function () {
     Route::post('/products', [ProductController::class, 'store']); // hanya admin

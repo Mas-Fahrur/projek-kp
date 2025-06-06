@@ -38,9 +38,8 @@ class UserAuthController extends Controller
         return view('auth.login');
     }
 
-   public function login(Request $request)
+    public function login(Request $request)
 {
-    // validasi dulu
     $request->validate([
         'email' => ['required', 'email'],
         'password' => ['required'],
@@ -63,10 +62,8 @@ class UserAuthController extends Controller
     Auth::login($user);
     $request->session()->regenerate();
 
-    // // Debug: cek apakah user sudah login
-    // dd(Auth::check()); // kalau true berarti sudah login
-
-    return redirect()->intended('/dashboard');
+    // Ganti redirect ke halaman kategori produk
+    return redirect()->intended('/produk/man');
 }
 
 }

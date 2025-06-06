@@ -10,19 +10,16 @@ class ProdukController extends Controller
     /**
      * Menampilkan produk per kategori dalam tampilan view (frontend)
      */
-    public function showByCategory($category)
+    public function showByCategory($kategori)
     {
-        $allowedCategories = ['man', 'women', 'kids', 'couple', 'sarung', 'bahan'];
-
-        if (!in_array($category, $allowedCategories)) {
-            abort(404); // Kategori tidak dikenali
-        }
-
-        $products = Product::where('category', $category)->get();
-
-        return view('produk.kategori', compact('products', 'category'));
+        $products = Product::where('category', $kategori)->get();
+        return view('product.kategori', compact('products', 'kategori'));
     }
 
+    public function allproduk()
+    {
+        return view('product.tampilan');
+    }
     /**
      * Menampilkan produk per kategori dalam format JSON (untuk Postman/API)
      */

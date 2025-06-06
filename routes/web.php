@@ -1,64 +1,70 @@
 <?php
 
-use App\Http\Controllers\AdminAuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ReceiptController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\KeranjangController;
-use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\ProdukController;
-
+use Illuminate\Support\Facades\Auth;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+    
 Route::get('/', function () {
-    return view('beranda.beranda');
+    return view('welcome'); // Halaman beranda
 })->name('beranda');
 
-Route::get('/produk/{kategori}', [App\Http\Controllers\ProductController::class, 'index'])->name('produk.kategori');
-
-// Keranjang
-Route::get('/keranjang', [KeranjangController::class, 'showKeranjang'])->name('keranjang');
-
-//Profil
-Route::get('/profil', [ProfilController::class, 'showProfil'])->name('profil');
-
-// Optional: Login tetap boleh ada
-// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [AuthController::class, 'login']);
-
-// Product routes (tanpa middleware)
-Route::post('/products', [ProductController::class, 'store']);
-Route::get('/products', [ProductController::class, 'index']);
-Route::delete('/products/{id}', [ProductController::class, 'destroy']);
-
-// Cart routes (tanpa middleware)
-Route::post('/cart', [CartController::class, 'addToCart']);
-Route::post('/checkout', [CartController::class, 'checkout']);
-
-Route::get('/transaction/receipt/{nama}', [ReceiptController::class, 'printReceipt'])->name('transaction.receipt');
-Route::get('/admin/reports/transactions', [AdminController::class, 'transactionReport'])->name('admin.transactionReport');
+Route::get('/produk/{kategori}', [ProdukController::class, 'showByCategory'])->name('produk.kategori');
 
 Route::get('/dashboard', function () {
-    return view('pages.dashboard');
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/user/register', [UserAuthController::class, 'showRegister']);
-Route::post('/user/register', [UserAuthController::class, 'Register'])->name('register');
-Route::get('/user/login', [UserAuthController::class, 'showLogin']);
-Route::post('/user/login', [UserAuthController::class,'login'])->name('login');
-
-Route::post('/user/register', [UserAuthController::class, 'register'])->name('register');
-
-// Admin Login
-Route::get('/admin/login', [AdminAuthController::class, 'showLogin']);
-Route::get('/admin/dashboard', function () {
-    return view('pages.admin_dashboard');
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLogin'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'login']);
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->middleware('auth:admin');
 });
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
 
-Route::get('/produk/kategori/{category}', [ProductController::class, 'showByCategory']);
+// admin
+Route::get('/admin', function () {
+    return view('admin.dashboard');
+});
 
-// routes/web.php
-Route::get('/produk/kategori/{category}', [ProdukController::class, 'showByCategory']);
+
+Route::get('/transaksi', function () {
+    return view('admin.transaksi');
+});
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
+
+
+// User
+Route::prefix('user')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('auth.dashboard');
+    })->name('user.dashboard');
+    Route::get('/login', [UserAuthController::class, 'showLogin'])->name('show.login');
+    Route::post('/login', [UserAuthController::class, 'login'])->name('user.login');
+});
+
+require __DIR__ . '/auth.php';

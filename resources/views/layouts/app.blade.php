@@ -7,6 +7,8 @@
     <title>Web Toko</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    
 </head>
 
 <body>
@@ -17,21 +19,14 @@
         </div>
 
         <ul class="nav-menu">
-            <li><a href={{ route('beranda') }}>Beranda</a></li>
+            <li><a href="">Beranda</a></li>
             <li class="dropdown">
-                <a href="#produk">Produk</a>
+                <a href="/produk/man">Produk</a>
                 <ul class="dropdown-content">
-                    <li><a href="{{ route('produk.kategori', 'man') }}">man</a></li>
-                    <li><a href="{{ route('produk.kategori', 'women') }}">women</a></li>
-                    <li><a href="{{ route('produk.kategori', 'couple') }}">couple</a></li>
-                    <li><a href="{{ route('produk.kategori', 'sarung') }}">sarung</a></li>
-                    <li><a href="{{ route('produk.kategori', 'bahan') }}">bahan</a></li>
-
                 </ul>
             </li>
-            <li><a href={{ route('keranjang') }}>Keranjang</a></li>
-            <li><a href={{ route('profil') }}>Profil</a></li>
-            <li><a href="{{ route('login') }}" class="btn-login">Login</a></li> <!-- Dipindah ke sini -->
+           
+            <li><a href="{{ route('show.login') }}" class="btn-login">Login</a></li> <!-- Dipindah ke sini -->
         </ul>
     </div>
 
